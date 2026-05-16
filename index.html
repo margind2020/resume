@@ -105,6 +105,45 @@
       outline-offset: 4px;
       border-radius: 6px;
     }
+
+    /* Section card look */
+    .card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      line-height: 1;
+      border-radius: 6px;
+      background: rgba(255,107,0,0.08);
+      color: #ffb37a;
+      margin-right: 8px;
+    }
+
+    /* Download button removed per user request */
+
+    /* Print-friendly styles */
+    @media print {
+      body { background: #fff; color: #000; }
+      .card { background: transparent !important; box-shadow: none !important; border: none !important; }
+      header, footer { background: transparent !important; }
+      .resume-link::after, a::after { display: none !important; }
+      [data-aos] { animation: none !important; }
+      .section-icon { display: inline-block; }
+    }
   </style>
 </head>
 <body>
@@ -118,7 +157,7 @@
         <p class="text-lg text-gray-300 mb-2">BCA 3rd Year Student | SDJ International College, Surat</p>
         <p class="text-gray-400">Eager learner with a passion for technology and computer applications</p>
       </div>
-      <div class="flex justify-center md:justify-end mt-6 md:mt-0">
+      <div class="flex flex-col items-center md:items-end mt-6 md:mt-0">
         <!-- Replace the src below with your own photo URL -->
         <img src="https://i.ibb.co/0ywG3ny8/IMG-0175.jpg" alt="Margin Dhami Photo" class="w-32 h-32 object-cover rounded-full border-4 border-orange-500 shadow-lg" />
       </div>
@@ -128,7 +167,7 @@
   <!-- Main Content -->
   <main class="max-w-3xl mx-auto py-10 px-6 bg-zinc-900 rounded-lg shadow-lg mt-8">
     <!-- Contact Info -->
-    <section class="mb-8" data-aos="fade-right">
+    <section class="mb-8 card" data-aos="fade-right">
       <div class="flex flex-col md:flex-row md:justify-between md:items-center text-gray-400 text-sm">
         <div class="mb-2 md:mb-0">
           <span class="font-semibold text-white">Email:</span> <a href="mailto:dhamimargin315@gmail.com" class="resume-link">dhamimargin315@gmail.com</a>
@@ -143,16 +182,16 @@
     </section>
 
     <!-- Profile -->
-    <section class="mb-10" data-aos="fade-up">
-      <div class="section-title">Profile</div>
+    <section class="mb-10 card" data-aos="fade-up">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">👤</span>Profile</div>
       <p class="text-gray-300">
         I am a third-year BCA student at SDJ International College, Surat. I am enthusiastic about learning new computer skills and technologies. Currently, I am focusing on improving my proficiency in Excel and exploring various areas of computer applications. I am open to opportunities that help me grow and apply my knowledge in practical settings.
       </p>
     </section>
 
     <!-- Languages -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="300">
-      <div class="section-title">Languages</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="300">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">🌐</span>Languages</div>
       <ul class="list-disc list-inside text-gray-300 space-y-2">
         <li>Hindi</li>
         <li>Gujarati</li>
@@ -162,8 +201,8 @@
 
 
     <!-- Education -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="100">
-      <div class="section-title">Education</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="100">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">🎓</span>Education</div>
       <div class="mb-4">
         <span class="font-semibold text-white">SDJ International College, Surat</span>
         <div class="text-gray-300">Bachelor of Computer Applications (BCA), 3rd Year</div>
@@ -171,22 +210,22 @@
     </section>
 
     <!-- Experience -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="140">
-      <div class="section-title">Experience</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="140">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">💼</span>Experience</div>
       <div class="mb-4 text-gray-300">
         <span class="font-semibold text-white">Customer Chat Agent — Agency (3 months)</span>
         <div class="text-gray-300">Worked at an agency handling customer chat support across platforms. Responded to customer queries, logged issues, and coordinated with internal teams to resolve problems efficiently.</div>
         <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
           <li>Handled inbound chat conversations with professional and timely responses.</li>
-          <li>Used CRM and chat tools to track tickets and escalate technical issues.</li>
+          <li>Used CRM and chat tools (including SagePilot) to track tickets and escalate technical issues.</li>
           <li>Improved canned responses and reduced average handling time.</li>
         </ul>
       </div>
     </section>
 
     <!-- Skills -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="200">
-      <div class="section-title">Skills</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="200">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">⚙️</span>Skills</div>
       <div class="mb-4">
         <span class="text-white">Microsoft Excel (Currently Learning)</span>
         <div class="skill-bar"><div class="skill-fill" data-percent="50%"></div></div>
@@ -207,11 +246,15 @@
         <span class="text-white">Eager to Learn New Technologies</span>
         <div class="skill-bar"><div class="skill-fill" data-percent="85%"></div></div>
       </div>
+<div class="mb-4">
+        <span class="text-white">SagePilot (Chat Automation & Support)</span>
+        <div class="skill-bar"><div class="skill-fill" data-percent="75%"></div></div>
+      </div>
     </section>
 
     <!-- Projects -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="300">
-      <div class="section-title">Projects & Activities</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="300">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">📁</span>Projects & Activities</div>
       <ul class="list-disc list-inside text-gray-300 space-y-2">
         <li>Participated in college workshops on basic computer applications</li>
         <li>Currently working on improving Excel skills through online courses</li>
@@ -220,8 +263,8 @@
     </section>
 
     <!-- Interests -->
-    <section class="mb-10" data-aos="fade-up" data-aos-delay="400">
-      <div class="section-title">Interests</div>
+    <section class="mb-10 card" data-aos="fade-up" data-aos-delay="400">
+      <div class="section-title"><span class="section-icon" aria-hidden="true">✨</span>Interests</div>
       <div class="text-gray-300">
         Exploring new computer technologies, learning productivity tools, teamwork, and participating in tech events.
       </div>
@@ -256,6 +299,8 @@
     animateSkills();
 
     // Custom cursor code removed to prevent OS cursor overlay issues.
+
+    // Download button removed per user request.
   </script>
 </body>
 </html>
