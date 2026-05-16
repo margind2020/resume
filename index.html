@@ -71,29 +71,44 @@
       color: #fff;
       text-shadow: 0 0 8px rgba(255,107,0,0.12);
     }
-    .custom-cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: rgba(255, 107, 0, 0.15);
-      border: 2px solid #ff6b00;
-      box-shadow: 0 0 20px 4px #ff6b00;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background 0.2s, border 0.2s, box-shadow 0.2s;
-      mix-blend-mode: lighten;
-      pointer-events: none;
-    }
+    /* Removed custom cursor to avoid interfering with user's OS cursor.
+       Replaced with subtle link underline and focus styles below. */
     a, .section-title, input, textarea {
       cursor: pointer;
+    }
+
+    /* Subtle underline animation for links */
+    a, .resume-link {
+      position: relative;
+      display: inline-block;
+    }
+    a::after, .resume-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg,#ff6b00,#ffb347);
+      border-radius: 4px;
+      transition: width 0.25s ease;
+      pointer-events: none;
+      opacity: 0.95;
+    }
+    a:hover::after, .resume-link:hover::after {
+      width: 100%;
+    }
+
+    /* Visible focus ring for accessibility */
+    a:focus, .resume-link:focus, button:focus, input:focus, textarea:focus {
+      outline: 3px solid rgba(255,107,0,0.12);
+      outline-offset: 4px;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
-  <!-- Custom Cursor -->
-  <div class="custom-cursor" id="customCursor"></div>
+  <!-- Custom cursor removed to avoid interfering with system cursor -->
 
   <!-- Header with Photo -->
   <header class="bg-black py-8 px-6" data-aos="fade-down">
@@ -240,26 +255,7 @@
     window.addEventListener('scroll', animateSkills);
     animateSkills();
 
-    // Custom cursor animation
-    const cursor = document.getElementById('customCursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    // Cursor grow on hover for interactive elements
-    const interactive = document.querySelectorAll('a, .section-title, input, textarea');
-    interactive.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1.6)';
-        cursor.style.background = 'rgba(255,107,0,0.25)';
-        cursor.style.boxShadow = '0 0 32px 8px #ff6b00';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-        cursor.style.background = 'rgba(255,107,0,0.15)';
-        cursor.style.boxShadow = '0 0 20px 4px #ff6b00';
-      });
-    });
+    // Custom cursor code removed to prevent OS cursor overlay issues.
   </script>
 </body>
 </html>
